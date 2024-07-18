@@ -5,7 +5,6 @@ import LeftContainer from './components/LeftContainer';
 import RightContainer from './components/RightContainer';
 import Header from './components/Header';
 import Main from './components/Main';
-import Create from './components/create.js';
 import Event from './components/ResponsiveEvent.jsx/Event.js';
 import Schedule from './components/ResponsiveEvent.jsx/Schedule.js';
 import Guests from './components/ResponsiveEvent.jsx/Guests.js';
@@ -69,7 +68,6 @@ function RequesterApp() {
             </div>
           } />
           <Route path="/event" element={<Event />} />
-          <Route path="/create" element={<Create />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/guests" element={<Guests />} />
           <Route path="/history" element={<History />} />
