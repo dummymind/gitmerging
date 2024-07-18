@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
+import './RequestHeader.css';
 import calendaricon from '../../images/vector_x2.svg'
 import axios from 'axios';
 import './RequestHeader.css';
+import useFormContext from "./useFormContext"
 //const [eventFormData, seteventFormData] = useState({});
 
 
 export default function RequestHeader() {
-    const [eventTitle, setEventTitle] = useState('');
-    const [eventDate, setEventDate] = useState('');
-      useEffect(() => {
-          
-          const items = JSON.parse(localStorage.getItem('eventFormData'));
-        if (items) {
-          setEventTitle(items.eventTitle ==''? 'Click here to modify the event'  :items.eventTitle);
-          setEventDate(items.eventDate ==''? 'TBD'  :items.eventDate);
-        }
-      }, []);
+    const { title, eventFormData, setEventFormData, handleChange, canSubmit, handleSubmit, setErrors, errors } = useFormContext()
     return (<requestHeader className="requestHeader">
         <div className="container-fluid">
             <div className="bd-placeholder-img custom-jumbotron jumbotron p-6 mt-3 p-md-3 text-white rounded mb-2 d-flex flex-column justify-content-end m-4">
@@ -24,14 +16,24 @@ export default function RequestHeader() {
                     <div className="col-12 col-md-8 p-2 px-0 bg-light rounded mb-5 mb-md-0 ">
                         <div className="content">
                             <h6>
-                                <strong>Click here to modify the event</strong>
+                                <input
+                                    type="text"
+                                    readOnly=""
+                                    className="custom-title form-control-plaintext disabled"
+                                    id="staticEmail"
+                                    name="eventTitle"
+                                    value={eventFormData.eventTitle}
+                                    onChange={handleChange}
+                                    placeholder="Click here to modify the event"
+                                    style={{ backgroundColor: 'white !important', fontWeight: 'bold !important', fontSize: '60% !important' }}
+                                />
                             </h6>
                             <p>
                                 <strong>
-                                     <img src={calendaricon} height='12px'  />
-                                 </strong>
-                                   <span className='m-1'> <strong>Event date:  </strong> 12/18/2024 </span>
- 
+                                    <img src={calendaricon} height='12px' />
+                                </strong>
+                                <span className='m-1'> <strong>Event date:  </strong> {eventFormData.eventDate}</span>
+
                             </p>
                             <span>Status</span>
                             <div className="breadcrumb btn-group btn-breadcrumb rounded">
@@ -74,7 +76,6 @@ export default function RequestHeader() {
                 </div>
             </div>
         </div>
-
     </requestHeader>
     );
 

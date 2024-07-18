@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Papa from 'papaparse';
+//import Papa from 'papaparse';
 import './VisitCompletedFamilyMembers.css'; 
-import ReactPaginate from 'react-paginate';
+//import ReactPaginate from 'react-paginate';
 
 const PlannedFamilymember = () => {
   const [gridData, setGridData] = useState([]);
@@ -73,17 +73,17 @@ const PlannedFamilymember = () => {
       return row;
     });
 
-    const csv = Papa.unparse(csvData, {
-      columns: ['Name', ...latestYears.map(year => year.toString())],
-    });
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.setAttribute('href', url);
-    link.setAttribute('download', 'family_members_visits.csv');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // const csv = Papa.unparse(csvData, {
+    //   columns: ['Name', ...latestYears.map(year => year.toString())],
+    // });
+    // const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    // const url = URL.createObjectURL(blob);
+    // const link = document.createElement('a');
+    // link.setAttribute('href', url);
+    // link.setAttribute('download', 'family_members_visits.csv');
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
   };
 
   const handlePageClick = (event) => {
@@ -118,7 +118,7 @@ const PlannedFamilymember = () => {
           </tbody>
         </table>
       </div>
-      <ReactPaginate
+      {/* <ReactPaginate
         previousLabel={'previous'}
         nextLabel={'next'}
         breakLabel={'...'}
@@ -130,7 +130,7 @@ const PlannedFamilymember = () => {
         containerClassName={'pagination'}
         subContainerClassName={'pages pagination'}
         activeClassName={'active'}
-      />
+      /> */}
     </div>
   );
 };

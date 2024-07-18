@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Papa from 'papaparse';
+//import Papa from 'papaparse';
 import './ReportsContainer.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+//import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const ReportsContainer = () => {
   const [reportsData, setReportsData] = useState([]);
@@ -56,16 +56,16 @@ const ReportsContainer = () => {
 
  
   const exportToCSV = () => {
-    const csv = Papa.unparse(reportsData);
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    const url = URL.createObjectURL(blob);
-    link.setAttribute('href', url);
-    link.setAttribute('download', 'reportsData.csv');
-    link.style.visibility = 'hidden';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // const csv = Papa.unparse(reportsData);
+    // const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    // const link = document.createElement('a');
+    // const url = URL.createObjectURL(blob);
+    // link.setAttribute('href', url);
+    // link.setAttribute('download', 'reportsData.csv');
+    // link.style.visibility = 'hidden';
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
   };
 
   return (
