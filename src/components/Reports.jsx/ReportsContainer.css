@@ -1,0 +1,54 @@
+/* ReportsContainer.css */
+
+.custom-container {
+  margin-top: 20px;
+  max-width: 100%; /* Adjust this value based on your layout needs */
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr)); /* 9 columns with equal width */
+  grid-gap: 10px; /* Adjust gap between grid items as needed */
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: auto; /* Enable overflow scrolling for grid items */
+}
+
+.grid-header {
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.grid-item {
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #dee2e6; /* Optional: add bottom border to separate rows */
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #0056b3;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
