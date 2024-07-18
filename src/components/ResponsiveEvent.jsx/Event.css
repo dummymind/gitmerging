@@ -97,7 +97,9 @@
     color: darkblue !important;
     font-weight: 800 !important;
     font-size: 12px !important;
-  }  
+  } 
+  
+  
  
  
  
@@ -459,5 +461,18 @@ font-size: smaller !important;
 .error-message {
   color: red;
 }
+
+.custom-title
+{   
+  color: darkblue !important;
+  background-color: white !important;
+  font-weight: bold !important;
+  font-size: 20px !important;
+  color: darkblue;
+}
+
+.custom-title.form-control-plaintext::placeholder{
+  color:darkblue !important;
+  }
 
 

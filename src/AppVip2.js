@@ -54,18 +54,7 @@ function App() {
             <div>
               <Main />
               <Navbar />
-              <div className="container-fluid">
-                <div className="progress d-flex flex-column" style={{ backgroundColor: 'gainsboro', height: '100%' }}>
-                  <div className="row">
-                    <div className="col-md-8">
-                      <LeftContainer />
-                    </div>
-                    <div className="col-md-4">
-                      <RightContainer openEventDates={eventDates} />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Vip2/>
             </div>
           } />
           <Route path="/event" element={<Event />} />

@@ -151,10 +151,10 @@ export default function Vip2(){
         <div className="progress d-flex flex-column" style={{ backgroundColor: 'gainsboro', height: '100%' }}>
           <div className="row">
             <div className="col-md-8">
-              <LeftContainer />
+            <LeftContainer setFilteredEventDates={setFilteredEventDates} />
             </div>
             <div className="col-md-4">
-              <RightContainer />
+            <RightContainer eventDates={filteredEventDates} />
             </div>
           </div>
         </div>
