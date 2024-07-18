@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-//import Papa from 'papaparse';
+import Papa from 'papaparse';
 import './VisitCompletedFamilyMembers.css';  
-//import ReactPaginate from 'react-paginate';
+import ReactPaginate from 'react-paginate';
 
 const FamilyMembers = () => {
   const [gridData, setGridData] = useState([]);
@@ -24,7 +24,7 @@ const FamilyMembers = () => {
       const aggregatedData = aggregateData(data);
       setGridData(aggregatedData); 
     } catch (error) {
-      console.error('Error fetching data:', error);``
+      console.error('Error fetching data:', error);
     }
   };
 
@@ -73,15 +73,15 @@ const FamilyMembers = () => {
       return row;
     });
     
-    // const csv = Papa.unparse(csvData);
-    // const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    // const url = URL.createObjectURL(blob);
-    // const link = document.createElement('a');
-    // link.setAttribute('href', url);
-    // link.setAttribute('download', 'family_members_visits.csv');
-    // document.body.appendChild(link);
-    // link.click();
-    // document.body.removeChild(link);
+    const csv = Papa.unparse(csvData);
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'family_members_visits.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handlePageClick = (event) => {
@@ -115,7 +115,7 @@ const FamilyMembers = () => {
           </tbody>
         </table>
       </div>
-      {/* <ReactPaginate
+      <ReactPaginate
         previousLabel={'previous'}
         nextLabel={'next'}
         breakLabel={'...'}
@@ -127,7 +127,7 @@ const FamilyMembers = () => {
         containerClassName={'pagination'}
         subContainerClassName={'pages pagination'}
         activeClassName={'active'}
-      /> */}
+      />
     </div>
   );
 };

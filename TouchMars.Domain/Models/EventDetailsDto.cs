@@ -21,7 +21,7 @@ namespace TouchMars.Domain.Models
         public string? LastVisit { get; set; }
 
         [Required]
-        public DateTime? EventDate { get; set; }
+        public string? EventDate { get; set; }
 
         [Required]
         public bool IsDateFlexible { get; set; }
