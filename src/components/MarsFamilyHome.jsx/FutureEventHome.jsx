@@ -1,7 +1,7 @@
 
 import React from 'react';  
 import rectangelimage2 from '../../images/rectangle_1871.jpg'
-import rectangelimage from '../../images/capture_decran_20240313_a_16271.jpg'
+import rectangelimage from '../../images/capture_decran_20240313_a_16272.jpg'
 
 export default function FutureEvents() {
     return (

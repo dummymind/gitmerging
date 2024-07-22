@@ -28,11 +28,12 @@ export default function RequestHeader() {
                             </h6>
                             <p>
                                 <strong>
-                                    <img src={calendaricon} />
-                                    Event date: TBD
-                                </strong>
+                                     <img src={calendaricon} height='12px'  />
+                                 </strong>
+                                   <span className='m-1'> <strong>Event date:  </strong> 12/18/2024 </span>
+ 
                             </p>
-                            <p>Status</p>
+                            <span>Status</span>
                             <div className="breadcrumb btn-group btn-breadcrumb rounded">
                                 <a
                                     href="#"

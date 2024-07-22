@@ -11,10 +11,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+// builder.Services.AddDbContext<TouchMarsDbContext>(options =>
+// {
+//     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+// });
+
 builder.Services.AddDbContext<TouchMarsDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+        options.UseInMemoryDatabase("InMemoryDb"));
+        builder.Services.AddSingleton<StaticDataService>();
+        builder.Services.AddScoped<SiteVisitdetailsService>();
 
 //builder.Services.AddDbContext<TouchMarsDbContext>(opt =>
 //    opt.UseInMemoryDatabase("EventDetails"));

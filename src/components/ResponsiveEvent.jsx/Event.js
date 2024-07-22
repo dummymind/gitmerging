@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import calendaricon from '../../images/vector_x2.svg'
 import globeimage from '../../images/capture_decran_20240318_a_14532.jpg';
@@ -12,10 +11,10 @@ import RequestHeader from '../ResponsiveEvent.jsx/RequestHeader.js';
 import './RequestHeader.css';
 import EventSideBar from './EventSideBar.js';
 import axios from 'axios';
-
-
+ 
+ 
 function Event() {
-  
+ 
   const [eventId, seteventId] = useState(0);
   const [eventFormData, setEventFormData] = useState({
     // Initialize your form data state here
@@ -44,7 +43,7 @@ function Event() {
     NameOfMem:'',
     IsScheduleChange:false
   });
-
+ 
   const [errors, setErrors] = useState({});
   const [eventCoHost, seteventCoHost] = useState('');
   const [coHostEmail, setcoHostEmail] = useState('');
@@ -61,14 +60,14 @@ function Event() {
   const [country, setcountry] = useState([]);
   const [state, setstate] = useState([]);
   const [city, setcity] = useState([]);
-
+ 
   // const items = JSON.parse(localStorage.getItem('eventFormData'));
   // if (items) {
   //   eventFormData =items;
   // };
-
-
-  
+ 
+ 
+ 
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     fetchEventTypes();
@@ -87,9 +86,9 @@ function Event() {
   else{
     localStorage.setItem('eventFormData', JSON.stringify(eventFormData));
   }
-  }, []); 
+  }, []);
   // Empty dependency array to run only once on component mount
-
+ 
   const fetchEventTypes = async () => {
     try {
       const response = await axios.get('https://localhost:44311/api/EventDetails/EventType');
@@ -99,7 +98,7 @@ function Event() {
       console.error('Error fetching event types:', error);
     }
   };
-
+ 
   const fetchEventFormat = async () => {
     try {
       const response = await axios.get('https://localhost:44311/api/EventDetails/EventFormat');
@@ -109,7 +108,7 @@ function Event() {
       console.error('Error fetching event types:', error);
     }
   };
-
+ 
   const fetchLastVisit = async () => {
     try {
       const response = await axios.get('https://localhost:44311/api/EventDetails/IntervalBetweenLastVisit');
@@ -119,7 +118,7 @@ function Event() {
       console.error('Error fetching event types:', error);
     }
   };
-
+ 
   const fetchAssociateAtEvent = async () => {
     try {
       const response = await axios.get('https://localhost:44311/api/EventDetails/AssociateAtEvent');
@@ -165,15 +164,15 @@ function Event() {
       console.error('Error fetching event types:', error);
     }
   };
-
-
-
+ 
+ 
+ 
   const handleChange = (e) => {
-    var data = e.target.name; 
+    var data = e.target.name;
     const { fname, value, type, checked } = e.target;
-    
+   
     let errorMessage = '';
-  
+ 
     // Perform validation for each field
     if (fname === 'requestedBy' && value.trim() === '') {
       errorMessage = 'Requested by is required';
@@ -215,13 +214,13 @@ function Event() {
     // } else if (name === 'estimatedMars' && value.trim() === '') {
     //   errorMessage = 'Please select a range for estimated mars';
     // }
-  
+ 
     setErrors({ ...errors, [fname]: errorMessage });
-  
+ 
     // Update the state based on the type of input field
     // if (type === 'checkbox') {
     //   setEventFormData({ ...eventFormData, [name]: checked });
-    // } else 
+    // } else
     if (data == "eventType" || data == "eventFormat" || data == "lastVisit" || data == "cityName" ) {
       setEventFormData({ ...eventFormData, [e.target.name]: e.target.options[e.target.selectedIndex].text });
  
@@ -231,84 +230,55 @@ function Event() {
       setEventFormData({ ...eventFormData, [e.target.name]: e.target.options[e.target.selectedIndex].text });
        // useEffect(() => {
           fetchState(e.target.options[e.target.selectedIndex].text);
-        //}, []); 
+        //}, []);
     }
     else if(data == "stateName")
       {
         setEventFormData({ ...eventFormData, [e.target.name]: e.target.options[e.target.selectedIndex].text });
       //  useEffect(() => {
           fetchCity(e.target.options[e.target.selectedIndex].text);
-      //  }, []); 
+      //  }, []);
       } else if (data === 'associateAtEvent') {
         if (e.target.checked) {
           setSelectedOptions([...selectedOptions, { value: e.target.value }]);
         }
         else {
           setSelectedOptions(selectedOptions.filter(item => item.value !== e.target.value));
-  
+ 
         }
         setEventFormData({ ...eventFormData, "associates": selectedOptions.map(x => x.value) });
     } else if(data === 'isDateFlexible')
       {
         setEventFormData({ ...eventFormData, [e.target.name]: e.target.checked });
-      } 
+      }
     else {
       setEventFormData({ ...eventFormData, [e.target.name]: e.target.value });
       }
       localStorage.setItem('eventFormData', JSON.stringify(eventFormData));
       localStorage.setItem('errors', JSON.stringify(errors));
   };
-  
+ 
  
   return (
-    
+   
     <div>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></link>
-
+ 
       <div className='container-fluid-custom'>
-
+ 
         <Header/>
       <RequestHeader/>
-      
+     
         <div className="container-fluid">
-          <div className="row m-2 mb-5">
-            {/* <div className="col-md-3">
-              <ul className="nav nav-custom flex-column">
-                <li className="nav-item">
-                   <NavLink to="/event" className="nav-custom nav-link">
-                       EVENT DETAILS
-                    </NavLink>
-                </li>
-                <li className="nav-item">
-                    <NavLink to="/schedule" className="nav-custom nav-link">
-                        SCHEDULE & ITINERARY
-                    </NavLink>
-                </li>
-                <li className="nav-item">
-                    <NavLink to="/guests" className="nav-custom nav-link">
-                        GUESTS
-                    </NavLink>
-                </li>
-                <li className="nav-item">
-                <NavLink to="/history" className="nav-custom nav-link">
-                   HISTORY & COMMENTS
-                </NavLink>
-                </li>
-                <li className="nav-item">
-                <NavLink to="/summary" className="nav-custom nav-link">
-                    POST EVENT SUMMARY
-                  </NavLink>
-                </li>
-              </ul>
-            </div> */}
-            <EventSideBar  />
-          
-
+          <div className="row m-1 mb-5">
+           <EventSideBar  />
+         
+ 
             <div className="col-md-6">
               <form id="eventDetailsform">
                 <div className=" bg-light rounded p-3 ">
-
+ 
                   <div className="form-group row mb-2">
                     <label
                       htmlFor="staticEmail"
@@ -325,10 +295,10 @@ function Event() {
                         name="requestedBy"
                         value={eventFormData.requestedBy}
                         onChange={handleChange}
-                        placeholder="name" 
+                        placeholder="name"
                       />
                       {errors.requestedBy && <div style={{ color: 'red',fontSize:"13px" }}>{errors.requestedBy}</div>}
-    
+   
                     </div>
                   </div>
                   <div className="form-group row mb-2">
@@ -424,7 +394,7 @@ function Event() {
                             value={eventFormData.phone}
                             onChange={handleChange}
                             placeholder="Insert Phone Number"
-
+ 
                           />
                           {errors.phone && <div style={{ color: 'red' ,fontSize:"13px"}}>{errors.phone}</div>}
                         </div>
@@ -449,7 +419,7 @@ function Event() {
                         value={eventFormData.eventCoHost}
                         paceholder="Insert an name"
                         onChange={handleChange}
-
+ 
                       />
                     </div>
                   </div>
@@ -474,10 +444,10 @@ function Event() {
                       />
                     </div>
                   </div>
-
+ 
                 </div>
                 <div className=" bg-light rounded p-3 mt-3">
-
+ 
                   <div className="form-group row mb-2">
                     <label
                       htmlFor="staticEmail"
@@ -503,26 +473,30 @@ function Event() {
                       htmlFor="staticEmail"
                       className="custom-font col-sm-4 col-form-label"
                     >
-                      IS THE EVENT DATE FLEXIBLE
+                      IS THE EVENT DATE FLEXIBLE ?
                     </label>
                     <div className="col-sm-8 ">
                       <div className="custom-control custom-switch">
                         <input
-                          type="checkbox"
+                          type="hidden"
                           className="custom-control-input"
                           id="switch1"
                           name="isDateFlexible"
                           checked={eventFormData.isDateFlexible}
                           onChange={handleChange}
-
+ 
                         />
+                        <label className="switch">
+                        <input type="checkbox" defaultChecked="" />
+                        <span className="slider round" />
+                        </label>
                       {errors.isDateFlexible && <div style={{ color: 'red',fontSize:"13px" }}>{errors.isDateFlexible}</div>}
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className=" bg-light rounded p-3 mt-3">
-
+ 
                   <div className="form-group row mb-2">
                     <label
                       htmlFor="staticEmail"
@@ -546,9 +520,10 @@ function Event() {
                   <div className="form-group row mb-2">
                     <label
                       htmlFor="staticEmail"
-                      className="custom-font col-sm-4 col-form-label"
+                      className="border-custom-strip custom-font col-sm-4 col-form-label"
                     >
-                      <div className="vr-custom vr" /> PLEASE SPECIFY
+                      {/* <div className="vr-custom vr" /> PLEASE SPECIFY */}
+                      <div className=""> PLEASE SPECIFY</div>
                     </label>
                     <div className="col-sm-8 ">
                       <input
@@ -584,7 +559,7 @@ function Event() {
                           </option>
                         ))}
                       </select>
-
+ 
                     {errors.countryName && <div style={{ color: 'red',fontSize:"13px" }}>{errors.countryName}</div>}
                     </div>
                   </div>
@@ -593,7 +568,7 @@ function Event() {
                       htmlFor="staticEmail"
                       className="custom-font col-sm-4 col-form-label"
                     >
-                      STATE
+                      CITY
                     </label>
                     <div className="col-sm-8 ">
                       <div className="row">
@@ -650,7 +625,7 @@ function Event() {
                         type="text"
                         className="custom-font-lt form-control"
                         id="staticEmail"
-
+ 
                         name="eventVenueName"
                         value={eventFormData.eventVenueName}
                         onChange={handleChange}
@@ -677,10 +652,10 @@ function Event() {
                         {errors.eventAddress && <div style={{ color: 'red',fontSize:"13px" }}>{errors.eventAddress}</div>}
                     </div>
                   </div>
-
+ 
                 </div>
                 <div className=" bg-light rounded p-3 mt-3">
-
+ 
                   <div className="form-group row mb-2">
                     <label
                       htmlFor="staticEmail"
@@ -709,6 +684,28 @@ function Event() {
                   <div className="form-group row mb-2">
                     <label
                       htmlFor="staticEmail"
+                      className="border-custom-strip custom-font col-sm-4 col-form-label"
+                    >
+                      <div className="" />
+                      PLEASE SPECIFY
+                    </label>
+                    <div className="col-sm-8  ">
+                      <input
+                        readOnly=""
+                        type="text"
+                        className="custom-font-lt form-control disabled"
+                        id="staticEmail"
+                        name="nameOfMem"
+                        value={eventFormData.nameOfMem}
+                        onChange={handleChange}
+ 
+                      />
+                      {errors.nameOfMem && <div style={{ color: 'red',fontSize:"13px" }}>{errors.nameOfMem}</div>}
+                    </div>
+                  </div>
+                  <div className="form-group row mb-2">
+                    <label
+                      htmlFor="staticEmail"
                       className="custom-font col-sm-4 col-form-label"
                     >
                       EVENT FORMAT
@@ -727,7 +724,7 @@ function Event() {
                             {eventFormat}
                           </option>
                         ))}
-
+ 
                       </select>
                       {errors.eventFormat && <div style={{ color: 'red',fontSize:"13px"}}>{errors.eventFormat}</div>}
                     </div>
@@ -735,9 +732,9 @@ function Event() {
                   <div className="form-group row mb-2">
                     <label
                       htmlFor="staticEmail"
-                      className="custom-font col-sm-4 col-form-label"
+                      className="border-custom-strip custom-font col-sm-4 col-form-label"
                     >
-                      <div className="vr-custom vr" />
+                      <div className="" />
                       PLEASE SPECIFY
                     </label>
                     <div className="col-sm-8  ">
@@ -749,7 +746,7 @@ function Event() {
                         name="nameOfMem"
                         value={eventFormData.nameOfMem}
                         onChange={handleChange}
-
+ 
                       />
                       {errors.nameOfMem && <div style={{ color: 'red',fontSize:"13px" }}>{errors.nameOfMem}</div>}
                     </div>
@@ -780,10 +777,10 @@ function Event() {
                       {errors.lastVisit && <div style={{ color: 'red', fontSize:"13px" }}>{errors.lastVisit}</div>}
                     </div>
                   </div>
-
+ 
                 </div>
                 <div className=" bg-light rounded p-3 mt-3 mb-3">
-
+ 
                   <div className="form-group row mb-2">
                     <label
                       htmlFor="staticEmail"
@@ -801,7 +798,7 @@ function Event() {
                                 {associateAtEvent}
                                 {errors.associateAtEvent && <div style={{ color: 'red' ,fontSize:"13px"}}>{errors.associateAtEvent}</div>}
                               </label> <br /></div>
-                              
+                             
                           ))}
                         </div>
                       </div>
@@ -823,7 +820,7 @@ function Event() {
                         name="totalAttendees"
                         value={eventFormData.totalAttendees}
                         onChange={handleChange}
-
+ 
                       />
                       {errors.totalAttendees && <div style={{ color: 'red',fontSize:"13px" }}>{errors.totalAttendees}</div>}
                     </div>
@@ -843,30 +840,30 @@ function Event() {
                         id="staticEmail"
                         name="estimatedMars"
                         placeholder="Type an estimation"
-
+ 
                       />
-                  
+                 
                     </div>
-                    
+                   
                   </div>
-                
-
+               
+ 
                 </div>
-
+ 
               </form>
               </div>
               <div className="col-md-4 rounded">
                 <MapComponent />
             </div>
-
-            
+ 
+           
           </div>
         </div>
         <Footer />
       </div>
     </div >
   );
-
+ 
 }
-
-export default Event;
+ 
+export default Event

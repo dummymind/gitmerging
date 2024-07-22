@@ -2,6 +2,7 @@ import React from 'react';
 
 import rectangelimage from '../../images/capture_decran_20240313_a_16271.jpg';
 import rectangelimage2 from '../../images/rectangle_1871.jpg';
+import { Link } from 'react-router-dom';
 
 function LeftContainer() {
     return (
@@ -47,11 +48,6 @@ function LeftContainer() {
                 </div>
             </div>
             <div className="selectboxcontainer listitems">
-
-
-
-
-
             <div className="row card-group text-wrap text-start m-2">
             <div className='col-md-4 p-2'>  
   <div className="card rounded">
@@ -67,7 +63,7 @@ function LeftContainer() {
       </p>
     </div>
     <div className="card-footer-custom card-footer">
-      <button className='card-footer-button btn rounded-pill'>OPEN EVENT</button>
+    <Link to={`/event/${event.eventId}`} className="card-footer-button btn rounded-pill">OPEN EVENT</Link>
       <span className='float-right-custom'>
       <button className='card-footer-button-right btn '>X</button>
       <button className='card-footer-button-right btn '>✔️</button>
@@ -177,24 +173,8 @@ function LeftContainer() {
 
   </div>
   </div>
-
-
-
-  
-
-  
-
-   
-
-
-
 </div>
-
-
-
-
- 
-            </div>
+ </div>
             <div className="paging align-items-center">
                 <span className="centered-text">1-1 OF 1 ELEMENTS</span>
             </div>
