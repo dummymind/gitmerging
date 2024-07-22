@@ -33,7 +33,7 @@ namespace TouchMars.Api.Models
         public string? LastVisit { get; set; }
 
         [Required]
-        public String EventDate { get; set; }
+        public DateTime EventDate { get; set; }
 
         [Required]
         public bool IsDateFlexible { get; set; }

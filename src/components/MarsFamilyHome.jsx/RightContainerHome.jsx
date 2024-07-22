@@ -1,6 +1,5 @@
 import React from 'react';
 import Calendar from './CalendarHome';
-
 import FutureEvents from './FutureEventHome';
 function RightContainer() {
     return (

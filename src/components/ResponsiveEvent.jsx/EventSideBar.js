@@ -1,43 +1,41 @@
-import { NavLink } from "react-router-dom";
 import "./EventSideBar.css";
- 
+
 function EventSideBar()
 {
- 
+
     return <div className="col-md-2 p-0">
     <ul className="nav nav-custom flex-column">
       <li className="nav-item">
-        <NavLink to="/event"
+        <a
           className=" nav-custom nav-link active"
           aria-current="page"
           href="#"
         >
          EVENT DETAILS <span className="circle-cus circle1-cus" ></span>
-        </NavLink>
+        </a>
       </li>
       <li className="nav-item">
-        < NavLink to ="/schedule" className=" nav-custom nav-link" href="#">
-          SCHEDULE &amp; ITINERARY    
-          </NavLink>
-       
+        <a className=" nav-custom nav-link" href="#">
+          SCHEDULE &amp; ITINERARY 
+        </a>
       </li>
       <li className="nav-item">
-        <NavLink to="/guests" className=" nav-custom nav-link">
-          GUESTS     
-          </NavLink>
+        <a className=" nav-custom nav-link" href="#">
+          GUESTS
+        </a>
       </li>
       <li className="nav-item">
-      <NavLink to="/history" className=" nav-custom nav-link" href="#">
+        <a className=" nav-custom nav-link" href="#">
           HISTORY &amp; COMMENTS
-        </NavLink>
+        </a>
       </li>
       <li className="nav-item">
-      <NavLink to="/summary" className=" nav-custom nav-link" href="#">
+        <a className=" nav-custom nav-link" href="#">
           POST EVENT SUMMARY
-        </NavLink>
+        </a>
       </li>
     </ul>
   </div>
 }
- 
+
 export default EventSideBar;

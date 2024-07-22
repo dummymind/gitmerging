@@ -58,7 +58,6 @@
   padding: 10px 0;
   border-top: 1px solid gainsboro;
   font-size: small !important;
-  z-index: 1000;
 }
  
 .buttonrequest, .buttonrequest:hover {
@@ -74,32 +73,10 @@
   margin-bottom: 5px;
   font-size: small !important;
 }
-
-.footer .left-button:hover {
-  background-color: transparent !important;
-  font-size: smaller !important;
-  color: white !important;
-  }
- 
 .footer .right-buttons {
   margin-right: 15px; /* Margin for the right buttons */
   font-size: small !important;
 }
-
-.footer .right-buttons:hover {
-  background-color: transparent !important;
-  font-size: smaller !important;
-  color: white !important;
-  }
-
-.custom-font-lt.custom-font-lt-h
-  {  
-    color: darkblue !important;
-    font-weight: 800 !important;
-    font-size: 12px !important;
-  } 
-  
-  
  
  
  
@@ -121,8 +98,7 @@
 }
  
 .btn-breadcrumb {
-  background-color: #E5E5F5 !important;
-  opacity: 60%;
+  background-color: gainsboro !important;
   font-size: 5px;
   color: darkblue !important;
 }
@@ -132,10 +108,10 @@
   font-size: small;
 } */
  
-/* .btn-breadcrumb .selectbreadcrumb {
+.btn-breadcrumb .selectbreadcrumb {
   font-weight: bold;
   background-color: #00D7B8 !important;
-} */
+}
  
 .btn-breadcrumb .btn:not(:last-child):after {
   content: " ";
@@ -256,15 +232,9 @@ margin: 0% 2% 0 2% !important;
   font-size: .7rem;
 }
  
-/* .btn-breadcrumb .selectbreadcrumb {
-  font-weight: bold;
-  background-color: #00D7B8;
-} */
-
 .btn-breadcrumb .selectbreadcrumb {
   font-weight: bold;
-  background-color: #00DCFA !important;
-  opacity: 100% !important;
+  background-color: #00D7B8;
 }
  
 .btn-breadcrumb .btn:not(:last-child):after {
@@ -274,7 +244,7 @@ margin: 0% 2% 0 2% !important;
   height: 0;
   border-top: 17px solid transparent;
   border-bottom: 17px solid transparent;
-  border-left: 10px solid rgb(8, 7, 7);
+  border-left: 10px solid gainsboro;
   position: absolute;
   top: 50%;
   margin-top: -17px;
@@ -461,18 +431,4 @@ font-size: smaller !important;
 .error-message {
   color: red;
 }
-
-.custom-title
-{   
-  color: darkblue !important;
-  background-color: white !important;
-  font-weight: bold !important;
-  font-size: 20px !important;
-  color: darkblue;
-}
-
-.custom-title.form-control-plaintext::placeholder{
-  color:darkblue !important;
-  }
-
 
